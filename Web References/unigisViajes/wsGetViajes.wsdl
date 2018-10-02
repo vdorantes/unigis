@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getViajes">
+        <s:complexType />
+      </s:element>
+      <s:element name="getViajesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getViajesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getViajesCerrados">
+        <s:complexType />
+      </s:element>
+      <s:element name="getViajesCerradosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getViajesCerradosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRutaId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rutaID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="viajeID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRutaIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateRutaIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getViajesSoapIn">
+    <wsdl:part name="parameters" element="tns:getViajes" />
+  </wsdl:message>
+  <wsdl:message name="getViajesSoapOut">
+    <wsdl:part name="parameters" element="tns:getViajesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getViajesCerradosSoapIn">
+    <wsdl:part name="parameters" element="tns:getViajesCerrados" />
+  </wsdl:message>
+  <wsdl:message name="getViajesCerradosSoapOut">
+    <wsdl:part name="parameters" element="tns:getViajesCerradosResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRutaIdSoapIn">
+    <wsdl:part name="parameters" element="tns:updateRutaId" />
+  </wsdl:message>
+  <wsdl:message name="updateRutaIdSoapOut">
+    <wsdl:part name="parameters" element="tns:updateRutaIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsGetViajesSoap">
+    <wsdl:operation name="getViajes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtener listaDeViajes par Enviar a Unigis</wsdl:documentation>
+      <wsdl:input message="tns:getViajesSoapIn" />
+      <wsdl:output message="tns:getViajesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getViajesCerrados">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtener listaDeViajes Cerrados par Enviar a Unigis</wsdl:documentation>
+      <wsdl:input message="tns:getViajesCerradosSoapIn" />
+      <wsdl:output message="tns:getViajesCerradosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRutaId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Actualizar registro almex del viaje</wsdl:documentation>
+      <wsdl:input message="tns:updateRutaIdSoapIn" />
+      <wsdl:output message="tns:updateRutaIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsGetViajesSoap" type="tns:wsGetViajesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getViajes">
+      <soap:operation soapAction="http://tempuri.org/getViajes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getViajesCerrados">
+      <soap:operation soapAction="http://tempuri.org/getViajesCerrados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRutaId">
+      <soap:operation soapAction="http://tempuri.org/updateRutaId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsGetViajesSoap12" type="tns:wsGetViajesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getViajes">
+      <soap12:operation soapAction="http://tempuri.org/getViajes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getViajesCerrados">
+      <soap12:operation soapAction="http://tempuri.org/getViajesCerrados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRutaId">
+      <soap12:operation soapAction="http://tempuri.org/updateRutaId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsGetViajes">
+    <wsdl:port name="wsGetViajesSoap" binding="tns:wsGetViajesSoap">
+      <soap:address location="http://10.10.121.31/www/app/wsUnigisData/wsGetViajes.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsGetViajesSoap12" binding="tns:wsGetViajesSoap12">
+      <soap12:address location="http://10.10.121.31/www/app/wsUnigisData/wsGetViajes.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="deleteRuta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rutaId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteRutaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteRutaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertRuta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rutaId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fechaRuta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dominio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="eco" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sticker" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="orden" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="latitud" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="longitud" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertRutaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertRutaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProgramacion">
+        <s:complexType />
+      </s:element>
+      <s:element name="getProgramacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProgramacionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="deleteRutaSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteRuta" />
+  </wsdl:message>
+  <wsdl:message name="deleteRutaSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteRutaResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertRutaSoapIn">
+    <wsdl:part name="parameters" element="tns:insertRuta" />
+  </wsdl:message>
+  <wsdl:message name="insertRutaSoapOut">
+    <wsdl:part name="parameters" element="tns:insertRutaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProgramacionSoapIn">
+    <wsdl:part name="parameters" element="tns:getProgramacion" />
+  </wsdl:message>
+  <wsdl:message name="getProgramacionSoapOut">
+    <wsdl:part name="parameters" element="tns:getProgramacionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsRutasSoap">
+    <wsdl:operation name="deleteRuta">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Limpiar Ruta</wsdl:documentation>
+      <wsdl:input message="tns:deleteRutaSoapIn" />
+      <wsdl:output message="tns:deleteRutaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertRuta">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Guardar Ruta</wsdl:documentation>
+      <wsdl:input message="tns:insertRutaSoapIn" />
+      <wsdl:output message="tns:insertRutaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProgramacion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Guardar Ruta</wsdl:documentation>
+      <wsdl:input message="tns:getProgramacionSoapIn" />
+      <wsdl:output message="tns:getProgramacionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsRutasSoap" type="tns:wsRutasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="deleteRuta">
+      <soap:operation soapAction="http://tempuri.org/deleteRuta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertRuta">
+      <soap:operation soapAction="http://tempuri.org/insertRuta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProgramacion">
+      <soap:operation soapAction="http://tempuri.org/getProgramacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsRutasSoap12" type="tns:wsRutasSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="deleteRuta">
+      <soap12:operation soapAction="http://tempuri.org/deleteRuta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertRuta">
+      <soap12:operation soapAction="http://tempuri.org/insertRuta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProgramacion">
+      <soap12:operation soapAction="http://tempuri.org/getProgramacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsRutas">
+    <wsdl:port name="wsRutasSoap" binding="tns:wsRutasSoap">
+      <soap:address location="http://10.10.121.31/www/app/wsUnigisData/wsRutas.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsRutasSoap12" binding="tns:wsRutasSoap12">
+      <soap12:address location="http://10.10.121.31/www/app/wsUnigisData/wsRutas.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

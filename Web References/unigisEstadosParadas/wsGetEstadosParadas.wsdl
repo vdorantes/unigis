@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getEstadosParadas">
+        <s:complexType />
+      </s:element>
+      <s:element name="getEstadosParadasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEstadosParadasResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getEstadosParadasSoapIn">
+    <wsdl:part name="parameters" element="tns:getEstadosParadas" />
+  </wsdl:message>
+  <wsdl:message name="getEstadosParadasSoapOut">
+    <wsdl:part name="parameters" element="tns:getEstadosParadasResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsGetEstadosParadasSoap">
+    <wsdl:operation name="getEstadosParadas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtener los estados de paradas para Enviar a Unigis</wsdl:documentation>
+      <wsdl:input message="tns:getEstadosParadasSoapIn" />
+      <wsdl:output message="tns:getEstadosParadasSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsGetEstadosParadasSoap" type="tns:wsGetEstadosParadasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getEstadosParadas">
+      <soap:operation soapAction="http://tempuri.org/getEstadosParadas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsGetEstadosParadasSoap12" type="tns:wsGetEstadosParadasSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getEstadosParadas">
+      <soap12:operation soapAction="http://tempuri.org/getEstadosParadas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsGetEstadosParadas">
+    <wsdl:port name="wsGetEstadosParadasSoap" binding="tns:wsGetEstadosParadasSoap">
+      <soap:address location="http://10.10.121.31/www/app/wsUnigisData/wsGetEstadosParadas.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsGetEstadosParadasSoap12" binding="tns:wsGetEstadosParadasSoap12">
+      <soap12:address location="http://10.10.121.31/www/app/wsUnigisData/wsGetEstadosParadas.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
